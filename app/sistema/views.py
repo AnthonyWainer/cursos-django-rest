@@ -1,25 +1,29 @@
 from django.shortcuts import render, HttpResponse
-from .forms import tipocursoForm
-
+from .forms import tipocursoForm, cursoForm
+from .models import tipocurso, curso
 # Create your views here.
 def index(request):
-    formulario = tipocursoForm()
-    return render(request, 'index.html', {'formu': formulario})
+    return render(request, 'index.html')
 
-def sumando(request):
-    
-    li = request.GET.getlist('suma[]')
-    suma = 0
-    for i in li:
-        suma += int(i)
-        
-    return HttpResponse("la suma de los números es: <strong>"+ str(suma) + "</strong>")
+def tipocursos(request):
+    if request.method == "POST": #esto sirve para preguntar si el método es post
+        f = tipocursoForm(request.POST) #esto sirve para rescatar los datos del formulario
 
-def dividir(request):
-    
-    dividendo = request.POST["dividendo"]
-    divisor = request.POST["divisor"]
-    
-    division = int(dividendo) / int(divisor)
-        
-    return HttpResponse("la división de los números es: <strong>"+ str(division) + "</strong>")    
+        if f.is_valid(): #esto sirve para validad formulario
+            tp = tipocurso()
+            tp.descripciontipocurso = request.POST["descripciontipocurso"]
+            tp.save()
+
+            tc = tipocurso.objects.all()
+            formulario = tipocursoForm()
+
+        else:
+            formulario = f
+    else:
+        tc = tipocurso.objects.all()
+        formulario = tipocursoForm()
+    return render(request, 'tipocurso.html', {'formu': formulario, 'tipocurso':tc})
+
+def curso(request):
+    formulario = cursoForm()
+    return render(request, 'curso.html', {'formu': formulario })
