@@ -1,8 +1,10 @@
 from django.shortcuts import render, HttpResponse
+from .forms import tipocursoForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    formulario = tipocursoForm()
+    return render(request, 'index.html', {'formu': formulario})
 
 def sumando(request):
     
