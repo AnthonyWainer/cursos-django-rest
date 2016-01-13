@@ -6,6 +6,11 @@
     <title>cursos</title>
     {% load static from staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+      .helptext{
+        color: green
+      }
+    </style>
 </head>
 <body >
     <div class="container">
@@ -15,10 +20,10 @@
           <form action="" method="post">
             {% csrf_token %}
             {% if formu.help_text %}
-              <p class="help">{{ formu.help_text|safe }}</p>
+              <p class="help" >{{ formu.help_text|safe }}</p>
             {% endif %}
 
-            {{formu}}
+            {{formu}}<br>
             <input type="submit" value="REGISTRAR CURSO" class="btn btn-default">
           </form>
 
