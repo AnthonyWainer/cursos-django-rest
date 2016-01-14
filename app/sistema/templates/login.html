@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %} login django {% endblock %}
+{% block estilos %}
+  {% load static from staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{%static 'css/login.css'%}" >
+{% endblock %}
+
+{% block contenido %}
+    <form class="form-signin" action="{%url 'logueo' %}" method="POST">
+      {% csrf_token %}
+      <h2 class="form-signin-heading">Por favor Inicie Sesión</h2>
+      <label for="inputEmail" class="sr-only">USUARIO</label>
+      <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Email address" required autofocus>
+
+      <label for="inputPassword" class="sr-only">PASSWORD</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Recordar
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+    </form>
+{% endblock %}

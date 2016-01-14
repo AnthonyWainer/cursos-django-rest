@@ -15,17 +15,8 @@
 
 {% block contenido %}
 <H1>FORMULARIO DE CURSOS</H1>
-<a href="{%url 'inicio' %}">Atras</a>
-<form action="" method="post">
-  {% csrf_token %}
-  {% if formu.help_text %}
-    <p class="help" >{{ formu.help_text|safe }}</p>
-  {% endif %}
+{% include "curso_t.html" %}
 
-  {{formu}}<br>
-  <input type="submit" value="REGISTRAR CURSO" class="btn btn-default">
-</form>
-<br>
 {% for c in cursos  %}
       <div class="col-md-4 bs-callout bs-callout-info">
           <div class="list-group">

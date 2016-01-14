@@ -1,46 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>cursos</title>
-    {% load static from staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-    <style>
-      .helptext{
-        color: green
-      }
-      .errorlist{
-        color: red
-      }
-    </style>
-</head>
-<body >
-    <div class="container">
-        <div class="rows">
-          <H1>CURSO</H1>
-          <a href="{%url 'inicio' %}">Atras</a>
-          <form action="" method="post">
-            {% csrf_token %}
-            {% if formu.help_text %}
-              <p class="help" >{{ formu.help_text|safe }}</p>
-            {% endif %}
+{% extends "base.html" %}
 
-            {{formu}}<br>
-            <input type="submit" value="Actualizar CURSO" class="btn btn-default">
-          </form>
-          <br>
+{% block titulo %} actualizarcurso {% endblock %}
 
+{% block estilos %}
+  <style>
+    .helptext{
+      color: green
+    }
+    .errorlist{
+      color: red
+    }
+  </style>
+{% endblock %}
 
-
-        </div>
-    </div>
-
-
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-
-</body>
-</html>
+{% block contenido %}
+  <H1>ACTUALIZAR CURSO</H1>
+  {% include "curso_t.html" %}
+{% endblock %}
