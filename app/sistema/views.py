@@ -25,6 +25,7 @@ def login(request):
                 if user.is_active:
                     auth.login(request, user)
                     return HttpResponseRedirect("/sistema")
+
                 else:
                     return HttpResponse("Cuenta desactivada")
             else:

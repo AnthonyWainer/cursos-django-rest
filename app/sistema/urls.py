@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from .views import index, cursillo, tipocursos, eliminarcurso, actualizarcurso, login, deslogueo, error404
+from .views import index, cursillo, tipocursos, eliminarcurso, actualizarcurso, deslogueo, error404, login
+#from django.contrib.auth.views import login
 
 urlpatterns = [
-
     url(r'^$', login, name="logueo"),
     url(r'^error404$', error404),
     url(r'^deslogueo$', deslogueo, name="logout"),
