@@ -1,40 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>cursos</title>
-    {% load static from staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-</head>
-<body >
-    <div class="container">
-        <div class="rows">
-          <h1>TIPO CURSO</h1>
-          <a href="{%url 'inicio' %}">Atras</a> <br>
-          <form action="" method="post">
-            {% csrf_token %}
-            {{formu}}
-            <input type="submit" value="REGISTRAR TIPO" class="btn btn-default">
-          </form>
-          <br>
+{% extends "base.html" %}
 
-          <ul>
-            {% for tc in tipocurso %}
-              <li>{{tc.descripciontipocurso}}</li>
-            {% endfor %}
+{% block titulo %} Cursos {% endblock %}
 
-          </ul>
+{% block contenido %}
+    <h1>TIPO CURSO</h1>
+    <a href="{%url 'inicio' %}">Atras</a> <br>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{formu}}
+      <input type="submit" value="REGISTRAR TIPO" class="btn btn-default">
+    </form>
+    <br>
 
+    <ul>
+      {% for tc in tipocurso %}
+        <li>{{tc.descripciontipocurso}}</li>
+      {% endfor %}
 
-        </div>
-    </div>
-
-
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-
-</body>
-</html>
+    </ul>
+{% endblock %}
