@@ -5,7 +5,27 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from .forms import tipocursoForm, cursoForm
 from .models import tipocurso, curso
+import csv, codecs
 # Create your views here.
+def dcsv(request):
+    if request.POST and request.FILES:
+        csvfile = request.FILES['csv_file']
+        print(csvfile)
+        dialect = csv.Sniffer().sniff(csvfile).read(1024)
+        csvfile.open()
+        with open(csvfile, newline='') as f:
+            reader = csv.reader(f)
+            for i,row in enumerate(reader):
+                print('Persona: ' + str(i + 1))
+                print('------------')
+                print(row[0] +  row[1] + row[2]  + row[3]  + row[4]  + row[5]  + row[6] + row[7] + row[8]  + row[9])
+                print('\n')
+        #dialect = csv.Sniffer().sniff(codecs.encode(csvfile, 'utf-8').read(1024))
+        #csvfile.open()
+        #reader = csv.reader(codecs.encode(csvfile,'utf-8'), delimiter=',', dialect=dialect)
+
+    return render(request, "csv.html")
+
 def error404(request):
     return render(request, 'error404.html')
 

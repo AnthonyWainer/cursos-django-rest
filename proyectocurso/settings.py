@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'import_export',
     'app.seguridad',
     'app.sistema'
 ]
@@ -67,7 +69,7 @@ WSGI_APPLICATION = 'proyectocurso.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'cursopython',
+       'NAME': 'cursos',
        'USER': 'postgres',
        'PASSWORD':'123',
        'HOST'    :'localhost',

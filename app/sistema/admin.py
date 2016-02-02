@@ -1,6 +1,14 @@
 from django.contrib import admin
-from .models import * 
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+from .models import *
 
-# Register your models here.
+class cursoResource(resources.ModelResource):
+    class Meta:
+        model = curso
+# Register your models herecurso
+class cursoAdmin(ImportExportModelAdmin):
+    resource_class = cursoResource
+    pass
 admin.site.register(tipocurso)
 admin.site.register(curso)
